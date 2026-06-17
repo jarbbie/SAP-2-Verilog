@@ -2,7 +2,7 @@
 
 ## == DIAGRAM ===
 
-![Diagram](assets/SAP-2.drawio.png)
+![Diagram](assets/SAP-2.png)
 
 
 ## === NOTE ===
