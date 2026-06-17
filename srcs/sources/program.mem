@@ -1,0 +1,7 @@
+// Basic Math Program
+
+3E 05 // MVI_A, 5
+06 02 // MVI_B, 2
+80 // ADD B
+D3 03 // OUT 3
+76 // HLT

@@ -1,0 +1,34 @@
+// Objective: Tests all MOV, MVI, ADD, SUB, INR, and DCR instructions.
+// Expected Result: Port 3 should output 09 before halting.
+
+// --- DATA TRANSFER TEST ---
+3E 05 // MVI A, 05 (A = 5)
+06 03 // MVI B, 03 (B = 3)
+0E 02 // MVI C, 02 (C = 2)
+47    // MOV B, A  (B = 5)
+48    // MOV C, B  (C = 5)
+79    // MOV A, C  (A = 5)
+
+// --- MATH TEST ---
+06 03 // MVI B, 03 (B = 3)
+0E 02 // MVI C, 02 (C = 2)
+80    // ADD B     (A = 5 + 3 = 8)
+91    // SUB C     (A = 8 - 2 = 6)
+
+// --- INC/DEC TEST ---
+3C    // INR A     (A = 7)
+04    // INR B     (B = 4)
+0D    // DCR C     (C = 1)
+81    // ADD C     (A = 7 + 1 = 8)
+05    // DCR B     (B = 3)
+
+// --- FINAL ROUTING TEST ---
+4F    // MOV C, A  (C = 8)
+78    // MOV A, B  (A = 3)
+81    // ADD C     (A = 3 + 8 = 0B)
+3D    // DCR A     (A = 0A)
+3D    // DCR A     (A = 09)
+
+// --- OUTPUT & HALT ---
+D3 03 // OUT 03    (Expect 09 on Hex Display)
+76    // HLT

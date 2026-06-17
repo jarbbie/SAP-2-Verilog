@@ -1,0 +1,30 @@
+// Objective: This validates 16-bit Program Counter by executing infinite loops, conditional jumps (JZ, JNZ, JM), absolute jumps (JMP), and a subroutine (CALL, RET).
+// Expected Result: Port 3 should output 99 before halting.
+
+// 0000: BOOT (Skip the trap)
+C3 04 00 // JMP 0004
+76       // 0003: HLT (TRAP 1 - If JMP fails, CPU dies here)
+
+// 0004: LOOP TEST (JNZ)
+3E 05    // MVI A, 05
+3D       // 0006: DCR A
+C2 06 00 // JNZ 0006 (Loop 5 times until A = 0)
+
+// 000A: ZERO FLAG TEST (JZ)
+CA 0E 00 // JZ 000E (Since A is 0, this should trigger)
+76       // 000D: HLT (TRAP 2 - If JZ fails, CPU dies here)
+
+// 000E: SIGN FLAG TEST (JM)
+3E 00    // MVI A, 00
+3D       // DCR A (A wraps to FF, turning Sign Flag ON)
+FA 15 00 // JM 0015 (Since S is 1, this should trigger)
+76       // 0014: HLT (TRAP 3 - If JM fails, CPU dies here)
+
+// 0015: SUBROUTINE TEST (CALL & RET)
+CD 1B 00 // CALL 001B (Jump to subroutine)
+D3 03    // 0018: OUT 03 (Expect 99 on Hex Display)
+76       // 001A: HLT (Success!)
+
+// 001B: THE SUBROUTINE
+3E 99    // MVI A, 99
+C9       // RET (Return to address 0018)

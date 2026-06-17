@@ -1,0 +1,24 @@
+// Objective: Tests memory access (LDA, STA), bitwise math (ANA, ORA, XRA, ANI, ORI, XRI), shifts (RAL, RAR), and inverse (CMA).
+// Expected Result: Port 3 should output 12 before halting.
+
+// --- SHIFT & INVERT TEST ---
+3E 01 // MVI A, 01 (A = 0000 0001)
+17    // RAL       (A = 0000 0010)
+17    // RAL       (A = 0000 0100)
+1F    // RAR       (A = 0000 0010 / 02H)
+
+// --- BITWISE MATH TEST ---
+06 0F // MVI B, 0F (B = 0000 1111)
+A0    // ANA B     (A = 02 AND 0F = 02)
+F6 10 // ORI 10    (A = 02 OR 10 = 12)
+EE FF // XRI FF    (A = 12 XOR FF = ED)
+2F    // CMA       (A = INVERT(ED) = 12)
+
+// --- MEMORY READ/WRITE TEST ---
+32 F0 00 // STA 00F0 (Save A to RAM address 00F0)
+3E 00    // MVI A, 00 (Wipe A to prove RAM works)
+3A F0 00 // LDA 00F0 (Load A from RAM address 00F0)
+
+// --- OUTPUT & HALT ---
+D3 03 // OUT 03    (Expect 12 on Hex Display)
+76    // HLT
