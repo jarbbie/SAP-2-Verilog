@@ -1,6 +1,6 @@
 # SAP-2 Verilog
 
-## == DIAGRAM ===
+## === DIAGRAM ===
 
 ![Diagram](assets/SAP-2.png)
 
