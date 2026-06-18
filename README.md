@@ -41,6 +41,6 @@ D3 03 // OUT 3
 ![Waveform Result](assets/waveform_res.png)
 
 **All other instructions**
-- [x] [test_1.mem](sources/test_1.mem): all MOV, MVI, ADD, SUB, INR, and DCR instructions.
-- [x] [test_2.mem](sources/test_2.mem): memory access (LDA, STA), bitwise math (ANA, ORA, XRA, ANI, ORI, XRI), shifts (RAL, RAR), and inverse (CMA).
-- [x] [test_3.mem](sources/test_3.mem): conditional jumps (JZ, JNZ, JM), absolute jumps (JMP), and a subroutine (CALL, RET).
+- [x] [test_1.mem](srcs/sources/test_1.mem): all MOV, MVI, ADD, SUB, INR, and DCR instructions.
+- [x] [test_2.mem](srcs/sources/test_2.mem): memory access (LDA, STA), bitwise math (ANA, ORA, XRA, ANI, ORI, XRI), shifts (RAL, RAR), and inverse (CMA).
+- [x] [test_3.mem](srcs/sources/test_3.mem): conditional jumps (JZ, JNZ, JM), absolute jumps (JMP), and a subroutine (CALL, RET).
