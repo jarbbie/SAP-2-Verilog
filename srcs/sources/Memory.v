@@ -13,7 +13,7 @@ module memory (
     
     initial begin
         // Overwrite XX unknown states with 0s
-        for (i = 0; i < 65535; i = i + 1) begin
+        for (i = 0; i < 65536; i = i + 1) begin
             ram[i] = 8'h00;
         end
         
