@@ -7,7 +7,7 @@
 
 ## === NOTE ===
 
-1. INR and DCR would overwrite Accumulator so I fix it by applying a multiplexer behavior (Select / Constant 1) just like (Select / Constant 4) in Single-Bus General-Purpose Register (GPR) Architecture which used for incrementing PC. Lead to 
+1. INR and DCR would overwrite Accumulator so I fix it by applying a multiplexer behavior (Select / Constant 1) just like (Select / Constant 4) in Single-Bus General-Purpose Register (GPR) Architecture which used for incrementing PC.
 
 2. Even though active-low is not necessary anymore for this simulation, I still include it to make it looks cool 😎. Would remove in the later one for consistency and standard.
 
